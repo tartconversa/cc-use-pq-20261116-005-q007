@@ -1,0 +1,31 @@
+{
+  "facilities": [{"facility_id":"F1","name":"Synthetic optical plant","opened_day":"2026-01-01"}],
+  "families": [{"family_id":"LF1","facility_id":"F1","name":"Demo lens family","active_from":"2026-01-01"}],
+  "stations": [
+    {"station_id":"S_M","facility_id":"F1","process_stage":"mold","active_from":"2026-01-01"},
+    {"station_id":"S_C","facility_id":"F1","process_stage":"coat","active_from":"2026-01-01"}
+  ],
+  "sources": [
+    {"source_id":"SRC_M","facility_id":"F1","process_stage":"mold"},
+    {"source_id":"SRC_C","facility_id":"F1","process_stage":"coat"}
+  ],
+  "contracts": [
+    {"contract_id":"C_M","source_id":"SRC_M","version":1,"effective_day":"2026-01-01","retired_day":null,
+      "field_map":{"external_id":"external_id","family_id":"family_id","lot_id":"lot_id","station_id":"station_id","occurred_at":"occurred_at","units":"units","passed_units":"passed_units","rejected_units":"rejected_units","measured_value":"measured_value","measured_unit":"measured_unit"},
+      "unit_map":{"mm":"um","um":"um","nm":"um"},
+      "required":["external_id","family_id","lot_id","station_id","occurred_at","units","passed_units","rejected_units"]},
+    {"contract_id":"C_C","source_id":"SRC_C","version":1,"effective_day":"2026-01-01","retired_day":null,
+      "field_map":{"external_id":"external_id","family_id":"family_id","lot_id":"lot_id","station_id":"station_id","occurred_at":"occurred_at","units":"units","passed_units":"passed_units","rejected_units":"rejected_units","measured_value":"measured_value","measured_unit":"measured_unit"},
+      "unit_map":{"mm":"um","um":"um","nm":"um"},
+      "required":["external_id","family_id","lot_id","station_id","occurred_at","units","passed_units","rejected_units"]}
+  ],
+  "batches": [
+    {"batch_id":"B_M","source_id":"SRC_M","source_key":"FILE_M","submitted_at":"2026-02-01T09:00:00Z",
+      "rows":[{"external_id":"M1","family_id":"LF1","lot_id":"L_M","station_id":"S_M","occurred_at":"2026-02-01T08:00:00Z","units":100,"passed_units":90,"rejected_units":10,"measured_value":"0.002","measured_unit":"mm"},
+              {"external_id":"M_BAD","family_id":"LF1","lot_id":"L_M","station_id":"S_M","occurred_at":"2026-02-01T08:05:00Z","units":10,"passed_units":9,"rejected_units":0}]},
+    {"batch_id":"B_C","source_id":"SRC_C","source_key":"FILE_C","submitted_at":"2026-02-02T09:00:00Z",
+      "rows":[{"external_id":"C1","family_id":"LF1","lot_id":"L_C","station_id":"S_C","occurred_at":"2026-02-02T08:00:00Z","units":80,"passed_units":78,"rejected_units":2,"measured_value":"2","measured_unit":"um"}]}
+  ],
+  "links": [{"link_id":"LINK1","facility_id":"F1","parent_lot":"L_M","child_lot":"L_C","used_units":80}],
+  "snapshot": {"snapshot_id":"SNAP1","facility_id":"F1","from_day":"2026-02-01","to_day":"2026-02-02"}
+}
